@@ -1,12 +1,16 @@
-import React from 'react'
-import Dashboard from './pages/Dashboard'
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchMarketData } from "./components/redux/slices/marketSlice";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
-  return (
-    <>
-        <Dashboard />
-    </>
-  )
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchMarketData());
+  }, [dispatch]);
+
+  return <Dashboard />;
 }
 
-export default App
+export default App;
